@@ -41,6 +41,16 @@ int main() {
 
     }
 
+    words.remove(0);
 
-  return 0;
+    cout << "La longitud de la lista es: " << words.getLength() << endl;
+
+
+    for (int i = 0; i < words.getLength(); ++i) {
+        cout << "El valor es: " << words.get(i) << endl;
+
+    }
+
+
+    return 0;
 }

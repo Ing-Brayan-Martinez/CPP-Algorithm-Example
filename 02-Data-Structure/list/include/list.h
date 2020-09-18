@@ -46,6 +46,11 @@ template<typename T> class Node {
             return this->index;
         }
 
+        void setNext(Node<T> *next)
+        {
+              this->next = next;
+        }
+
         void finish()
         {
             this->next = NULL;
@@ -154,59 +159,54 @@ template<typename T>
 void List<T>::remove(int index)
 {
     Node<T> *last = NULL;
-    T value;
-    int position;
+    Node<T> *del = NULL;
 
     last = chain;
 
     if (last == NULL) {
         throw exception();
 
-    } else if (last->getIndex() == index) {
-        value = last->getValue();
+
+    } else if (index == length) {
+        chain = last->getNext();
+        length--;
 
     } else {
         while (last->getNext() != NULL) {
-            last = last->getNext();
-            if (last->getIndex() == index) {
-                value = last->getValue();
+            if (last->getIndex() == index + 1) {
                 break;
             }
+            last = last->getNext();
         }
+
+        del = last->getNext();
+        last->setNext(del->getNext());
+        chain = last;
+        length--;
 
     }
 
-//    Node<T> *anterior;
-//    Node<T> *actual;
-//
-//    anterior = chain;
-//    actual = chain; //
-//    if (chain->value==v) {
-//        actual = chain;
-//        chain = actual->getNext();
-//        delete actual;
-//        actual = chain;
-//        length--;
-//
-//    } else {
-//        actual = actual->next;
-//        while (actual!=NULL) {
-//            if (actual->value==v) {
-//                anterior->next = actual->next;
-//                actual = anterior->next;
-//            } else {
-//                anterior = actual;
-//                actual = actual->next;
-//            }
-//        }
-//    }
 }
 
 
 template<typename T>
 string List<T>::toString() {
-    cout << "La lista es: " << endl;
-    string str = "";
+
+    string str = "List [";
+
+    for (int i = 0; i < length; i++) {
+        auto tmp =  (char) this->get(i);
+
+        str = str + tmp;
+
+
+        if (i < length-1) {
+            str = str + ", ";
+        }
+    }
+
+    str + "];";
+
     return str;
 }
 
