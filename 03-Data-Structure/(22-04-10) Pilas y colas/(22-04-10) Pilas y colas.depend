@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1271965919 source:c:\documents and settings\usuario07\escritorio\(22-04-10) pilas y colas\main.cpp
+	<iostream>
+	<list>
+	<vector>
+	<fstream>
+
+1271966864 source:h:\estructura y base de datos\programas en clase\(22-04-10) pilas y colas\main.cpp
+	<iostream>
+	<list>
+	<vector>
+	<fstream>
+	<cmath>
+

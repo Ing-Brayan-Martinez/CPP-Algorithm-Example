@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1276660149 source:c:\documents and settings\paulina\escritorio\priority\main.cpp
+	<iostream>
+	<vector>
+	<fstream>
+

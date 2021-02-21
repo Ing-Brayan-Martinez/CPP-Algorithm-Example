@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1270961405 source:c:\users\raoul\documents\programacion\clase vector\clasevector.cpp
+	"clasevector.h"
+
+1270961405 c:\users\raoul\documents\programacion\clase vector\clasevector.h
+	<iostream>
+	<cmath>
+
+1270961516 source:c:\users\raoul\documents\programacion\clase vector\main.cpp
+	"clasevector.h"
+

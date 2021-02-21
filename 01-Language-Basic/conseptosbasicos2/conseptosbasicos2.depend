@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1268330064 source:h:\estructura y base de datos\estructuras y bases de datos(fido)\conseptosbasicos2\main.cpp
+	<iostream>
+	<cmath>
+	<fstream>
+
