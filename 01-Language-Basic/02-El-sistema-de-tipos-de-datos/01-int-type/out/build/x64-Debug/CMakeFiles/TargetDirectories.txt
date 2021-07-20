@@ -1,3 +1,0 @@
-C:/Users/braya/Desktop/07 Proyectos/Ing-Brayan-Martinez/C-Plus-Plus-Algorithm-Example/01-Language-Basic/02-El-sistema-de-tipos-de-datos/01-int-type/out/build/x64-Debug/CMakeFiles/01-int-type.dir
-C:/Users/braya/Desktop/07 Proyectos/Ing-Brayan-Martinez/C-Plus-Plus-Algorithm-Example/01-Language-Basic/02-El-sistema-de-tipos-de-datos/01-int-type/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/braya/Desktop/07 Proyectos/Ing-Brayan-Martinez/C-Plus-Plus-Algorithm-Example/01-Language-Basic/02-El-sistema-de-tipos-de-datos/01-int-type/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
