@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1272572104 source:c:\documents and settings\user12\escritorio\christian_zambrano_ex1\main.cpp
+	<iostream>
+	<list>
+	<vector.h>
+
+1273124212 source:d:\documentos\zambo ingeniería\estructuras y bases de datos\christian_zambrano_ex1\main.cpp
+	<iostream>
+	<list>
+	<vector>
+
+1273131400 source:f:\zambo ingeniería\estructuras y bases de datos\christian_zambrano_ex1_corr\main.cpp
+	<iostream>
+	<list>
+	<vector>
+
+1273131400 source:h:\estructura y base de datos\mario\christian_zambrano_ex1_corr\main.cpp
+	<iostream>
+	<list>
+	<vector>
+

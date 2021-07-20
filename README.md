@@ -50,6 +50,6 @@ Microsoft Visual Studio. Tiene dependencias mínimas, requiriendo sólo un compi
 
 ### Referencias
 
-- [Que es c++?](https://es.wikipedia.org/wiki/C++))
+- [Que es c++?](https://es.wikipedia.org/wiki/C++)
 - [Que es CMake?](https://es.wikipedia.org/wiki/CMake#:~:text=CMake%20es%20una%20familia%20de%20herramientas%20dise%C3%B1ada%20para,de%20configuraci%C3%B3n%20sencillos%20e%20independientes%20de%20la%20plataforma.)
 

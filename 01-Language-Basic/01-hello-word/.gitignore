@@ -1,6 +1,10 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 /cmake-build-debug
+/out
+
+### vs ###
+.vs
 
 ### STS ###
 .apt_generated
