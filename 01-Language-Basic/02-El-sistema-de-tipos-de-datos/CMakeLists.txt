@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.14)
 
 # Project name
-project ("cpp-type")
+project ("CppType")
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -27,31 +27,31 @@ FetchContent_MakeAvailable(googletest)
 
 # Definir libreria
 add_library (${LIB_NAME} STATIC
-        Cpp-Type/src/01-int-type.cpp
-        Cpp-Type/src/02-float-type.cpp
-        Cpp-Type/src/03-double-type.cpp
-        Cpp-Type/src/04-char-type.cpp
-        Cpp-Type/src/05-string-type.cpp)
+        CppType/src/int_type.cpp
+        CppType/src/float_type.cpp
+        CppType/src/double_type.cpp
+        CppType/src/char_type.cpp
+        CppType/src/string_type.cpp)
 
 target_include_directories(${LIB_NAME}
-        PRIVATE Cpp-Type/include)
+        PRIVATE CppType/include)
 
 
 
 
 # Definir libreria de pruebas
 add_executable(${LIB_NAME_TEST}
-        Cpp-Type-Test/01-int-type-test.cpp
-        Cpp-Type-Test/02-float-type-test.cpp
-        Cpp-Type-Test/03-double-type-test.cpp
-        Cpp-Type-Test/04-char-type-test.cpp
-        Cpp-Type-Test/05-string-type-test.cpp)
+        CppTypeTest/int_type_test.cpp
+        CppTypeTest/float_type_test.cpp
+        CppTypeTest/double_type_test.cpp
+        CppTypeTest/char_type_test.cpp
+        CppTypeTest/string_type_test.cpp)
 
 target_link_libraries (${LIB_NAME_TEST}
-        PRIVATE ${LIB_NAME} )
-       # gtest_main)
+        PRIVATE ${LIB_NAME}
+        gtest_main)
 
 target_include_directories(${LIB_NAME_TEST}
-        PRIVATE Cpp-Type/include)
+        PRIVATE CppType/include)
 
 add_test(MyLibrary.UnitTest COMMAND ${LIB_NAME_TEST})

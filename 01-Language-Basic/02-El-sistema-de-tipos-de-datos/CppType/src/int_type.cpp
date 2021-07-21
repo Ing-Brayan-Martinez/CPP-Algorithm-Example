@@ -1,7 +1,7 @@
 ﻿// 01-int-type.cpp : Defines the entry point for the application.
 //
 
-#include "../include/01-int-type.h"
+#include "int_type.h"
 
 using namespace std;
 
