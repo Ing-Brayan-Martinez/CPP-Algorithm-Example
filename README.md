@@ -16,8 +16,8 @@ los conseptos necesarios para programar en c++.
 
 ### Tabla de Contenidos
 
-- [Que es Java?](#que-es-c)
-- [Que es Spring?](#que-es-cmake)
+- [Que es CPP?](#que-es-c)
+- [Que es CMake?](#que-es-cmake)
 - [Referencias](#referencias)
 
 ### Que es C++?
