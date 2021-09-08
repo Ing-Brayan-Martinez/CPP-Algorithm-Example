@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 20)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(list
-               src/main.cpp)
+        src/main.cpp)
