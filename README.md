@@ -18,6 +18,7 @@ los conseptos necesarios para programar en c++.
 
 - [Que es CPP?](#que-es-c)
 - [Que es CMake?](#que-es-cmake)
+- [Que es un Algoritmo?](#que-es-un-algoritmo)
 - [Referencias](#referencias)
 
 ### Que es C++?
@@ -47,9 +48,15 @@ utilizando un método independiente del compilador. Soporta jerarquías de direc
 bibliotecas. Se utiliza en conjunción con entornos de construcción nativos como Make, Qt Creator, Ninja, Xcode de Apple, y
 Microsoft Visual Studio. Tiene dependencias mínimas, requiriendo sólo un compilador C++ en su propio sistema de construcción. 
 
+### Que es un Algoritmo?
+
+Un algoritmo es un conjunto de reglas que toma una o varias entradas, luego realiza cálculos internos y manipulaciones de 
+datos y devuelve una salida o un conjunto de salidas. En resumen, los algoritmos facilitan la vida. Desde manipulaciones 
+de datos complejas y hashes hasta aritmética simple, los algoritmos siguen un conjunto de pasos para producir un resultado 
+útil. Un ejemplo de un algoritmo sería una función simple que toma dos valores de entrada, los agrega y devuelve su suma.
 
 ### Referencias
 
 - [Que es c++?](https://es.wikipedia.org/wiki/C++)
 - [Que es CMake?](https://es.wikipedia.org/wiki/CMake#:~:text=CMake%20es%20una%20familia%20de%20herramientas%20dise%C3%B1ada%20para,de%20configuraci%C3%B3n%20sencillos%20e%20independientes%20de%20la%20plataforma.)
-
+- [Pagina de Ejersicios](https://the-algorithms.com/es)
