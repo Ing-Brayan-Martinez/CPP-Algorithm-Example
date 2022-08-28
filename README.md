@@ -16,7 +16,7 @@ los conseptos necesarios para programar en c++.
 
 ### Tabla de Contenidos
 
-- [Que es CPP?](#que-es-c)
+- [Que es C++?](#que-es-c)
 - [Que es CMake?](#que-es-cmake)
 - [Que es un Algoritmo?](#que-es-un-algoritmo)
 - [Referencias](#referencias)
@@ -57,6 +57,6 @@ de datos complejas y hashes hasta aritmética simple, los algoritmos siguen un c
 
 ### Referencias
 
-- [Que es c++?](https://es.wikipedia.org/wiki/C++)
+- [Que es C++?](https://es.wikipedia.org/wiki/C++)
 - [Que es CMake?](https://es.wikipedia.org/wiki/CMake#:~:text=CMake%20es%20una%20familia%20de%20herramientas%20dise%C3%B1ada%20para,de%20configuraci%C3%B3n%20sencillos%20e%20independientes%20de%20la%20plataforma.)
 - [Pagina de Ejersicios](https://the-algorithms.com/es)
