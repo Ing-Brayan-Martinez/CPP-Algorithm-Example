@@ -6,8 +6,8 @@
 #include <ChartType.h>
 
 TEST(CharTypeTest, BasicAssertions) {
-    char* a = GetData();
-    char* b = GetData();
+    char* a = GetSimpleData();
+    char* b = GetSimpleData();
 
     EXPECT_EQ(a, b);
 
