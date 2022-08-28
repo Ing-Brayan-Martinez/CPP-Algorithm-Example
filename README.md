@@ -1,7 +1,7 @@
 <h1 align="center">Reaprender C y C++</h1>
 
 <h1 align="center">
-  <img src="https://github.com/Ing-Brayan-Martinez/CPP-Algorithm-Example/blob/main/assets/R3a3bf5f33d7ea7fe13a6bbc8fedc070f.jpeg" alt="Foto" width="800"/>
+  <img src="https://github.com/Ing-Brayan-Martinez/CPP-Algorithm-Example/blob/main/.github/assets/R3a3bf5f33d7ea7fe13a6bbc8fedc070f.jpeg" alt="Foto" width="800"/>
 </h1>
 
 [![Build Status](https://travis-ci.org/leerob/dart-react-todo.svg?branch=master)](https://travis-ci.org/leerob/dart-react-todo)
