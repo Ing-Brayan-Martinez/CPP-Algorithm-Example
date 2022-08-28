@@ -7,6 +7,6 @@
 #ifndef CPP_ALGORITHM_EXAMPLE_SELECTIONSORT_H
 #define CPP_ALGORITHM_EXAMPLE_SELECTIONSORT_H
 
-void SelectionSort(std::vector<int> data);
+std::vector<int> SelectionSort(std::vector<int> data);
 
 #endif //CPP_ALGORITHM_EXAMPLE_SELECTIONSORT_H

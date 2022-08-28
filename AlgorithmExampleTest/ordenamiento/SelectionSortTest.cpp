@@ -15,9 +15,9 @@ TEST(SelectionSortTest, BasicAssertions) {
 
     //sort
     std::cout << std::endl;
-    SelectionSort(data);
+    std::vector<int> result = SelectionSort(data);
 
     //after
     std::cout << "After Sorting: " << std::endl;
-    PrintData(data);
+    PrintData(result);
 }
