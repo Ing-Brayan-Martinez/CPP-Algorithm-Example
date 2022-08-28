@@ -1,14 +1,13 @@
 #include <iostream>
 #include <list>
 
-using namespace std;
 
-list<double> lectura() {
-    list<double> L;
+std::list<double> lectura() {
+    std::list<double> L;
     double v;
 
     do {
-        cout<<"Ingrese el valor "<<endl;
+        std::cout<<"Ingrese el valor "<<endl;
         cin>>v;
         if(v!=-1)
         L.push_front(v);
@@ -18,15 +17,15 @@ list<double> lectura() {
     return L;
 }
 
-void presentar(list<double> L) {
-    list<double>::iterator it;
+void presentar(std::list<double> L) {
+    std::list<double>::iterator it;
 
     for(it=L.begin();it!=L.end();it++) {
-        cout<<*it<<" ";
+        std::cout<<*it<<" ";
     }
 }
 
-list<double> seleccion(list<double> L) {
+std::list<double> seleccion(std::list<double> L) {
     list<double>T;
     list<double>::iterator it,et,at;
     double min;

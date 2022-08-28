@@ -5,6 +5,6 @@
 #ifndef CPP_TYPE_CHAR_TYPE_H
 #define CPP_TYPE_CHAR_TYPE_H
 
-char[] char * getData();
+char * GetData();
 
 #endif //CPP_TYPE_CHAR_TYPE_H
