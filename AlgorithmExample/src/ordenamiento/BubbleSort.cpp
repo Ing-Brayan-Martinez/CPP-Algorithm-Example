@@ -3,7 +3,7 @@
 //
 #include <BubbleSort.h>
 
-void BubbleSort(std::vector<int> data) {
+auto BubbleSort(std::vector<int> data) -> void {
     bool swap_check = true;
     int n = data.size();
 

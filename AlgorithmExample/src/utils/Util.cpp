@@ -4,7 +4,7 @@
 
 #include <Util.h>
 
-std::vector<int> GetData() {
+auto GetData() -> std::vector<int> {
     std::vector<int> data;
     data.push_back(6);
     data.push_back(2);
@@ -21,7 +21,7 @@ std::vector<int> GetData() {
     return data;
 }
 
-void PrintData(std::vector<int> data) {
+auto PrintData(std::vector<int> data) -> void {
     std::vector<int>::iterator it;
 
     for(it = data.begin(); it != data.end(); it++) {
