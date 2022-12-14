@@ -4,9 +4,7 @@
   <img src="https://github.com/Ing-Brayan-Martinez/CPP-Algorithm-Example/blob/main/.github/assets/R3a3bf5f33d7ea7fe13a6bbc8fedc070f.jpeg" alt="Foto" width="800"/>
 </h1>
 
-[![Build Status](https://travis-ci.org/leerob/dart-react-todo.svg?branch=master)](https://travis-ci.org/leerob/dart-react-todo)
-[![codecov](https://codecov.io/gh/leerob/dart-react-todo/branch/master/graph/badge.svg)](https://codecov.io/gh/leerob/dart-react-todo)
-[![Strong Mode Compliant](https://img.shields.io/badge/strong_mode-on-brightgreen.svg)](https://github.com/leerob/dart-react-todo/blob/master/analysis_options.yaml#L2)
+[![CMake Continuo Integration](https://github.com/Ing-Brayan-Martinez/CPP-Algorithm-Example/actions/workflows/cmake-ci.yml/badge.svg)](https://github.com/Ing-Brayan-Martinez/CPP-Algorithm-Example/actions/workflows/cmake-ci.yml)
 
 ### Introduccion
 
