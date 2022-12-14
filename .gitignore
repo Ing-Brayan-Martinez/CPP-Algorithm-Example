@@ -5,6 +5,7 @@
 
 ### vs ###
 .vs
+.vscode
 
 ### STS ###
 .apt_generated
@@ -28,3 +29,4 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
