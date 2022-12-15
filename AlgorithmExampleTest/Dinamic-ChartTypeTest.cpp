@@ -1,9 +1,8 @@
 //
-// Created by brayan on 20/07/2021.
+// Created by Qard Group CA on 12/15/22.
 //
-
 #include <gtest/gtest.h>
-#include <ChartType.h>
+#include <Dinamic-ChartType.h>
 
 TEST(CharTypeTest, BasicAssertions) {
     char* a = GetSimpleData();

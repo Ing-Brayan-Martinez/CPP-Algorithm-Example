@@ -3,8 +3,8 @@
 //
 
 #include <gtest/gtest.h>
-#include <Util.h>
-#include <SelectionSort.h>
+#include "Util-Data.h"
+#include "Ordering-SelectionSort.h"
 
 TEST(SelectionSortTest, BasicAssertions) {
     std::vector<int> data  = GetData();

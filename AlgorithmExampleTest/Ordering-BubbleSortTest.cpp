@@ -3,10 +3,10 @@
 //
 
 #include <gtest/gtest.h>
-#include <Util.h>
-#include <QuickSort.h>
+#include "Util-Data.h"
+#include "Ordering-BubbleSort.h"
 
-TEST(QuickSortTest, BasicAssertions) {
+TEST(BubbleSortTest, BasicAssertions) {
     std::vector<int> data  = GetData();
 
     //before
@@ -15,10 +15,9 @@ TEST(QuickSortTest, BasicAssertions) {
 
     //sort
     std::cout << std::endl;
-    QuickSort(data);
+    BubbleSort(data);
 
     //after
     std::cout << "After Sorting: " << std::endl;
     PrintData(data);
-
 }

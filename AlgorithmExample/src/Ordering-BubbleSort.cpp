@@ -1,7 +1,7 @@
 //
 // Created by Qard Group CA on 28/8/22.
 //
-#include <BubbleSort.h>
+#include "Ordering-BubbleSort.h"
 
 auto BubbleSort(std::vector<int> data) -> void {
     bool swap_check = true;

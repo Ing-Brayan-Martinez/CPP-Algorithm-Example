@@ -1,7 +1,7 @@
 //
 // Created by Qard Group CA on 28/8/22.
 //
-#include <SelectionSort.h>
+#include "Ordering-SelectionSort.h"
 
 std::vector<int> SelectionSort(std::vector<int> data) {
     std::vector<int>result;
