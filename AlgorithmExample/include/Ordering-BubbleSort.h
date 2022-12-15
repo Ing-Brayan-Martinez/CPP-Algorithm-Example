@@ -4,9 +4,9 @@
 
 #include <vector>
 
-#ifndef CPP_ALGORITHM_EXAMPLE_BUBBLESORT_H
-#define CPP_ALGORITHM_EXAMPLE_BUBBLESORT_H
+namespace Ordering {
 
-auto BubbleSort(std::vector<int> data) -> void;
+    auto BubbleSort(std::vector<int> &data) -> void;
 
-#endif //CPP_ALGORITHM_EXAMPLE_BUBBLESORT_H
+}
+

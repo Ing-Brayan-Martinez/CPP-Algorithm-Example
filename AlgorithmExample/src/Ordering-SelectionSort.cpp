@@ -3,24 +3,22 @@
 //
 #include "Ordering-SelectionSort.h"
 
-std::vector<int> SelectionSort(std::vector<int> data) {
-    std::vector<int>result;
-    std::vector<int>::iterator it, et, at;
-    double min;
+namespace Ordering {
 
-    while (data.size() != 0) {
-        it = data.begin();
-        at = it;
-        min =* it;
+    auto SelectionSort(std::vector<int> &data) -> void {
 
-        for (et = data.begin(); et != data.end(); et++) {
-            if (*et < min) {
-                min = *et;
-                at = et;
+        for (int i = 0; i < data.size() - 1; i++) {
+            int min_index = i;
+            for (int j = i + 1; j < data.size(); j++) {
+                if (data[min_index] > data[j]) {
+                    min_index = j;
+                }
+            }
+            if (min_index != i)
+            {
+                std::swap(data[i], data[min_index]);
             }
         }
-        data.erase(at);
-        result.push_back(min);
     }
-    return result;
 }
+

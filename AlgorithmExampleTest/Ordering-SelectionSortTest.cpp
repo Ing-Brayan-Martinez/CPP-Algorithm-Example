@@ -7,17 +7,22 @@
 #include "Ordering-SelectionSort.h"
 
 TEST(SelectionSortTest, BasicAssertions) {
-    std::vector<int> data  = GetData();
+    std::vector<int> data  = Util::GetData();
+
+    std::cout << std::endl << "-- SelectionSort --" << std::endl << std::endl;
 
     //before
     std::cout << "Before Sorting: " << std::endl;
-    PrintData(data);
+    Util::PrintData(data);
 
     //sort
     std::cout << std::endl;
-    std::vector<int> result = SelectionSort(data);
+    Ordering::SelectionSort(data);
 
     //after
     std::cout << "After Sorting: " << std::endl;
-    PrintData(result);
+    Util::PrintData(data);
+
+    assert(std::is_sorted(std::begin(data), std::end(data)));
+    std::cout << std::endl << "Test Passed!" << std::endl;
 }
