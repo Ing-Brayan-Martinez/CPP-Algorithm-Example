@@ -23,12 +23,11 @@ FetchContent_MakeAvailable(googletest)
 
 # Definir libreria
 add_library (${LIB_NAME} STATIC
-        AlgorithmExample/src/Dinamic-HelloWord.cpp
-        AlgorithmExample/src/Dinamic-ChartType.cpp
         AlgorithmExample/src/Ordering-BubbleSort.cpp
         AlgorithmExample/src/Ordering-SelectionSort.cpp
         AlgorithmExample/src/Ordering-QuickSort.cpp
-        AlgorithmExample/src/Util-Data.cpp)
+        AlgorithmExample/src/Util-Data.cpp
+        AlgorithmExample/src/Dinamic-Factorial.cpp)
 
 target_include_directories(${LIB_NAME}
         PRIVATE AlgorithmExample/include)
@@ -40,7 +39,8 @@ target_include_directories(${LIB_NAME}
 add_executable(${LIB_NAME_TEST}
         AlgorithmExampleTest/Ordering-BubbleSortTest.cpp
         AlgorithmExampleTest/Ordering-QuickSortTest.cpp
-        AlgorithmExampleTest/Ordering-SelectionSortTest.cpp AlgorithmExampleTest/Dinamic-ChartTypeTest.cpp)
+        AlgorithmExampleTest/Ordering-SelectionSortTest.cpp
+        AlgorithmExampleTest/Dinamic-FactorialTest.cpp)
 
 target_link_libraries (${LIB_NAME_TEST}
         PRIVATE ${LIB_NAME}
