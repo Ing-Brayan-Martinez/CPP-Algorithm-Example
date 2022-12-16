@@ -27,7 +27,8 @@ add_library (${LIB_NAME} STATIC
         AlgorithmExample/src/Ordering-SelectionSort.cpp
         AlgorithmExample/src/Ordering-QuickSort.cpp
         AlgorithmExample/src/Util-Data.cpp
-        AlgorithmExample/src/Dinamic-Factorial.cpp)
+        AlgorithmExample/src/Dinamic-Factorial.cpp
+        AlgorithmExample/src/Structure-List.cpp)
 
 target_include_directories(${LIB_NAME}
         PRIVATE AlgorithmExample/include)
@@ -40,7 +41,8 @@ add_executable(${LIB_NAME_TEST}
         AlgorithmExampleTest/Ordering-BubbleSortTest.cpp
         AlgorithmExampleTest/Ordering-QuickSortTest.cpp
         AlgorithmExampleTest/Ordering-SelectionSortTest.cpp
-        AlgorithmExampleTest/Dinamic-FactorialTest.cpp)
+        AlgorithmExampleTest/Dinamic-FactorialTest.cpp
+        AlgorithmExampleTest/Structure-ListTest.cpp)
 
 target_link_libraries (${LIB_NAME_TEST}
         PRIVATE ${LIB_NAME}
