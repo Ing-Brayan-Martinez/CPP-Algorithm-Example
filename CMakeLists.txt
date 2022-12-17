@@ -28,7 +28,10 @@ add_library (${LIB_NAME} STATIC
         AlgorithmExample/src/Ordering-QuickSort.cpp
         AlgorithmExample/src/Util-Data.cpp
         AlgorithmExample/src/Dinamic-Factorial.cpp
-        AlgorithmExample/src/Structure-List.cpp)
+        AlgorithmExample/src/Structure-List.cpp
+        AlgorithmExample/src/Dinamic-FizzBuzz.cpp
+        AlgorithmExample/src/Dinamic-Fibonacci.cpp
+        AlgorithmExample/src/Encryption-Base58.cpp AlgorithmExample/src/Encryption-Base64.cpp AlgorithmExample/src/Search-BinarySearch.cpp AlgorithmExample/src/Search-ExponentialSearch.cpp AlgorithmExample/src/Search-LinearSearch.cpp)
 
 target_include_directories(${LIB_NAME}
         PRIVATE AlgorithmExample/include)
