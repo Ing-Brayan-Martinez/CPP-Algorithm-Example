@@ -7,10 +7,6 @@ project (CPP_Algorithm_Example VERSION 0.0.1)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Global vars
-set (LIB_NAME_TEST AlgorithmExampleTest)
-set (LIB_NAME AlgorithmExample)
-
 
 
 # Definir libreria Google Test
@@ -22,7 +18,7 @@ FetchContent_MakeAvailable(googletest)
 
 
 # Definir libreria
-add_library (${LIB_NAME} STATIC
+add_library (AlgorithmExample STATIC
         AlgorithmExample/src/Ordering-BubbleSort.cpp
         AlgorithmExample/src/Ordering-SelectionSort.cpp
         AlgorithmExample/src/Ordering-QuickSort.cpp
@@ -31,27 +27,34 @@ add_library (${LIB_NAME} STATIC
         AlgorithmExample/src/Structure-List.cpp
         AlgorithmExample/src/Dinamic-FizzBuzz.cpp
         AlgorithmExample/src/Dinamic-Fibonacci.cpp
-        AlgorithmExample/src/Encryption-Base58.cpp AlgorithmExample/src/Encryption-Base64.cpp AlgorithmExample/src/Search-BinarySearch.cpp AlgorithmExample/src/Search-ExponentialSearch.cpp AlgorithmExample/src/Search-LinearSearch.cpp)
+        AlgorithmExample/src/Encryption-Base58.cpp
+        AlgorithmExample/src/Encryption-Base64.cpp
+        AlgorithmExample/src/Search-BinarySearch.cpp
+        AlgorithmExample/src/Search-ExponentialSearch.cpp
+        AlgorithmExample/src/Search-LinearSearch.cpp)
 
-target_include_directories(${LIB_NAME}
+target_precompile_headers(AlgorithmExample PRIVATE
+        <iostream>
+        <vector>
+        <unordered_map>)
+
+target_include_directories(AlgorithmExample
         PRIVATE AlgorithmExample/include)
 
 
 
 
 # Definir libreria de pruebas
-add_executable(${LIB_NAME_TEST}
+add_executable(AlgorithmExampleTest
         AlgorithmExampleTest/Ordering-BubbleSortTest.cpp
         AlgorithmExampleTest/Ordering-QuickSortTest.cpp
         AlgorithmExampleTest/Ordering-SelectionSortTest.cpp
         AlgorithmExampleTest/Dinamic-FactorialTest.cpp
         AlgorithmExampleTest/Structure-ListTest.cpp)
 
-target_link_libraries (${LIB_NAME_TEST}
-        PRIVATE ${LIB_NAME}
+target_link_libraries (AlgorithmExampleTest PRIVATE
+        AlgorithmExample
         gtest_main)
 
-target_include_directories(${LIB_NAME_TEST}
+target_include_directories(AlgorithmExampleTest
         PRIVATE AlgorithmExample/include)
-
-add_test(MyLibrary.UnitTest COMMAND ${LIB_NAME_TEST})
