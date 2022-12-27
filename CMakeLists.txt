@@ -5,7 +5,7 @@ project (CPP_Algorithm_Example VERSION 0.0.1)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 
@@ -18,7 +18,7 @@ FetchContent_MakeAvailable(googletest)
 
 
 # Definir libreria
-add_library (AlgorithmExample STATIC
+add_library(AlgorithmExample STATIC
         AlgorithmExample/src/Ordering-BubbleSort.cpp
         AlgorithmExample/src/Ordering-SelectionSort.cpp
         AlgorithmExample/src/Ordering-QuickSort.cpp
@@ -33,13 +33,13 @@ add_library (AlgorithmExample STATIC
         AlgorithmExample/src/Search-ExponentialSearch.cpp
         AlgorithmExample/src/Search-LinearSearch.cpp)
 
-target_precompile_headers(AlgorithmExample PRIVATE
+target_precompile_headers(AlgorithmExample PUBLIC
         <iostream>
         <vector>
         <unordered_map>)
 
-target_include_directories(AlgorithmExample
-        PRIVATE AlgorithmExample/include)
+target_include_directories(AlgorithmExample PUBLIC
+        AlgorithmExample/include)
 
 
 
@@ -55,6 +55,3 @@ add_executable(AlgorithmExampleTest
 target_link_libraries (AlgorithmExampleTest PRIVATE
         AlgorithmExample
         gtest_main)
-
-target_include_directories(AlgorithmExampleTest
-        PRIVATE AlgorithmExample/include)
