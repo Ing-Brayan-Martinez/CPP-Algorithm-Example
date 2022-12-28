@@ -26,7 +26,7 @@ int main()
 {
 int *x , n , *y, p;
 p=0;
-cout << "Ingrese el tamaño del arreglo " << endl;
+cout << "Ingrese el tamaï¿½o del arreglo " << endl;
 cin >> n;
 x = new int [n];
 y = new int [21];
@@ -44,7 +44,6 @@ for (int i=0 ; i<21 ; i++)
 }
 fa << "Numero de datos " << p;
 fa.close();
-
 
     return 0;
 }

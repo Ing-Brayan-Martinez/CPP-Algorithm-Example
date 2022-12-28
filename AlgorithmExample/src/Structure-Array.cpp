@@ -6,7 +6,7 @@ int main()
 {
     double*x,*p;
     int n;
-    cout<<"ingrese el número de componentes n=";
+    cout<<"ingrese el nï¿½mero de componentes n=";
     cin>>n;
     x=new double[n];
     cout<<"ingrese las componentes"<<endl;
