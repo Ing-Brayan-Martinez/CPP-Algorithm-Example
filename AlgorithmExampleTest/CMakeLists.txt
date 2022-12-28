@@ -13,7 +13,7 @@ add_executable(AlgorithmExampleTest
         src/Ordering-QuickSortTest.cpp
         src/Ordering-SelectionSortTest.cpp
         src/Dinamic-FactorialTest.cpp
-        src/Structure-ListTest.cpp)
+        src/Structure-ListTest.cpp src/Dinamic-FibonacciTest.cpp src/Dinamic-FizzBuzzTest.cpp)
 
 # Link libraries
 target_link_libraries(AlgorithmExampleTest PRIVATE

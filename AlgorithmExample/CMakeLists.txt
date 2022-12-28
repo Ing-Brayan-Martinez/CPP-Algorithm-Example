@@ -17,8 +17,6 @@ add_library(AlgorithmExample STATIC
         src/Structure-List.cpp
         src/Dinamic-FizzBuzz.cpp
         src/Dinamic-Fibonacci.cpp
-        src/Encryption-Base58.cpp
-        src/Encryption-Base64.cpp
         src/Search-BinarySearch.cpp
         src/Search-ExponentialSearch.cpp
         src/Search-LinearSearch.cpp)
