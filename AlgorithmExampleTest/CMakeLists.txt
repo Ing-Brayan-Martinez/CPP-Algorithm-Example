@@ -23,5 +23,5 @@ target_link_libraries(AlgorithmExampleTest PRIVATE
         gtest_main)
 
 # Execute from CLI
-add_test(NAME AlgorithmExample.UnitTest
+add_test(NAME ExecuteAllCTest
         COMMAND AlgorithmExampleTest)
