@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <string>
+
 #include "Util-Object.h"
 
 
