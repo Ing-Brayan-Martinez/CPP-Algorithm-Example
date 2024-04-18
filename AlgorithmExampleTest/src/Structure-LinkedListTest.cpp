@@ -7,7 +7,7 @@
 using namespace std;
 using namespace Structure;
 
-TEST(ListTest, BasicAssertions) {
+TEST(LinkedListTest, BasicAssertions) {
 //    ListInteger list;
 //
 //    list.Add(3);

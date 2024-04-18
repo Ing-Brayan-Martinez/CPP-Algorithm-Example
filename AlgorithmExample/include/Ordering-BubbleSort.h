@@ -5,8 +5,6 @@
 #include <vector>
 
 namespace Ordering {
-
     auto BubbleSort(std::vector<int> &data) -> void;
-
 }
 
