@@ -1,5 +1,5 @@
 //
-// Created by Qard Group CA on 12/15/22.
+// Created by Ing Brayan Martinez on 15/12/2022.
 //
 #include <gtest/gtest.h>
 #include <Dinamic-Fibonacci.h>
