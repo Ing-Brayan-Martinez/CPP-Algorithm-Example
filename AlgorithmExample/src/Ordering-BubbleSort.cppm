@@ -1,11 +1,16 @@
 //
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
-#include "Ordering-BubbleSort.h"
+module;
+
+#include <vector>
+#include <algorithm>
+
+export module ordering.bubblesort;
 
 namespace Ordering {
 
-    auto BubbleSort(std::vector<int> &data) -> void {
+    export auto BubbleSort(std::vector<int> &data) -> void {
         bool swap_check = true;
         int n = data.size();
 

@@ -2,7 +2,7 @@
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
 #include <gtest/gtest.h>
-#include <Dinamic-Fibonacci.h>
+import dinamic.fibonacci;
 
 TEST(FibonacciTest, BasicAssertions) {
     int num = 20;

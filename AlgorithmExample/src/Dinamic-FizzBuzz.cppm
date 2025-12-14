@@ -1,11 +1,15 @@
 //
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
-#include "Dinamic-FizzBuzz.h"
+module;
+
+#include <iostream>
+
+export module dinamic.fizzbuzz;
 
 namespace Dinamic {
 
-    auto FizzBuzz(unsigned int n) -> void {
+    export auto FizzBuzz(unsigned int n) -> void {
         for (unsigned int i = 1; i <= n; i++) {
             if (i % 3 == 0 && i % 5 == 0) {
                 std::cout << "FizzBuzz" << std::endl;
@@ -19,3 +23,4 @@ namespace Dinamic {
         }
     }
 }
+

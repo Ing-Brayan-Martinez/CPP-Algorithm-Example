@@ -2,7 +2,7 @@
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
 #include <gtest/gtest.h>
-#include <Dinamic-Factorial.h>
+import dinamic.factorial;
 
 TEST(FactorialTest, BasicAssertions) {
     int num = 5;

@@ -1,12 +1,14 @@
 //
 // Created by brayan on 17/9/20.
 //
+module;
 
 #include <iostream>
 #include <string>
 
-#include "Util-Object.h"
+export module structure.list;
 
+import util.object;
 
 namespace Structure {
 
@@ -80,7 +82,7 @@ namespace Structure {
      * @tparam T Tipo generico.
      */
     template<typename T>
-    class List: Object {
+    export class List: Object {
 
         private:
             Node<T> *chain;
@@ -203,7 +205,7 @@ namespace Structure {
      * Lista simple de tipo int.
      *
      */
-    class ListInteger: Object {
+    export class ListInteger: Object {
 
     private:
         Node<int> *chain;
@@ -321,7 +323,7 @@ namespace Structure {
     * Lista simple de tipo string.
     *
     */
-    class ListString: Object {
+    export class ListString: Object {
 
     private:
         Node<std::string> *chain;
@@ -542,16 +544,4 @@ namespace Structure {
 
     };
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

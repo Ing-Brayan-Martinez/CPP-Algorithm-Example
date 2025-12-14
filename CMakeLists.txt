@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.28)
 
 # Project name
 project(CPP_Algorithm_Example VERSION 0.0.1)

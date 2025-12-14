@@ -1,7 +1,12 @@
 //
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
-#include "Ordering-QuickSort.h"
+module;
+
+#include <vector>
+#include <algorithm>
+
+export module ordering.quicksort;
 
 namespace Ordering {
 
@@ -38,7 +43,7 @@ namespace Ordering {
         }
     }
 
-    auto QuickSort(std::vector<int> &data) -> void {
+    export auto QuickSort(std::vector<int> &data) -> void {
         int lower = 0;
         int upper = data.size() - 1;
 
@@ -51,3 +56,4 @@ namespace Ordering {
     }
 
 }
+

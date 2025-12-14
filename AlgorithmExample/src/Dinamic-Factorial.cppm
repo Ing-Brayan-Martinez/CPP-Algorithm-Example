@@ -1,13 +1,16 @@
 //
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
-#include "Dinamic-Factorial.h"
+module;
+
+export module dinamic.factorial;
 
 namespace Dinamic {
 
-    auto Factorial(unsigned int n) -> unsigned int {
+    export auto Factorial(unsigned int n) -> unsigned int {
         if (n == 0)
             return 1;
         return n * Factorial(n - 1);
     }
 }
+

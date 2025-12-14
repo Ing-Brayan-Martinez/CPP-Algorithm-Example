@@ -3,8 +3,10 @@
 //
 
 #include <gtest/gtest.h>
-#include "Util-Data.h"
-#include "Ordering-QuickSort.h"
+#include <vector>
+#include <algorithm>
+import util.data;
+import ordering.quicksort;
 
 TEST(QuickSortTest, BasicAssertions) {
     std::vector<int> data  = Util::GetData();

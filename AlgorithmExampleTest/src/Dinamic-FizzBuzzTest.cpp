@@ -2,7 +2,7 @@
 // Created by Qard Group CA on 12/15/22.
 //
 #include <gtest/gtest.h>
-#include <Dinamic-FizzBuzz.h>
+import dinamic.fizzbuzz;
 
 TEST(FizzBuzzTest, BasicAssertions) {
     int num = 20;

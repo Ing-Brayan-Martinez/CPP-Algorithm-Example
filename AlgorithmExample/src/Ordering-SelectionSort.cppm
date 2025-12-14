@@ -1,11 +1,16 @@
 //
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
-#include "Ordering-SelectionSort.h"
+module;
+
+#include <vector>
+#include <algorithm>
+
+export module ordering.selectionsort;
 
 namespace Ordering {
 
-    auto SelectionSort(std::vector<int> &data) -> void {
+    export auto SelectionSort(std::vector<int> &data) -> void {
 
         for (int i = 0; i < data.size() - 1; i++) {
             int min_index = i;

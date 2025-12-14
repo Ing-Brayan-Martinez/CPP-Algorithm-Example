@@ -3,8 +3,10 @@
 //
 
 #include <gtest/gtest.h>
-#include "Util-Data.h"
-#include "Ordering-BubbleSort.h"
+#include <vector>
+#include <algorithm>
+import util.data;
+import ordering.bubblesort;
 
 TEST(BubbleSortTest, BasicAssertions) {
     std::vector<int> data  = Util::GetData();

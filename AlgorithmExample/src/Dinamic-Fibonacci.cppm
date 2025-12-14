@@ -1,11 +1,13 @@
 //
 // Created by Ing Brayan Martinez on 15/12/2022.
 //
-#include "Dinamic-Fibonacci.h"
+module;
+
+export module dinamic.fibonacci;
 
 namespace Dinamic {
 
-    auto Fibonacci(unsigned int n) -> unsigned int {
+    export auto Fibonacci(unsigned int n) -> unsigned int {
         /* If the input is 0 or 1 just return the same
            This will set the first 2 values of the sequence */
         if (n <= 1) {
@@ -16,3 +18,4 @@ namespace Dinamic {
         return Fibonacci(n - 1) + Fibonacci(n - 2);
     }
 }
+

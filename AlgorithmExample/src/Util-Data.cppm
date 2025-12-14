@@ -1,11 +1,16 @@
 //
-// Created by Ing Brayan Martinez on 15/12/2022.
+// Created by Qard Group CA on 28/8/22.
 //
-#include "Util-Data.h"
+module;
+
+#include <iostream>
+#include <vector>
+
+export module util.data;
 
 namespace Util {
 
-    auto GetData() -> std::vector<int> {
+    export auto GetData() -> std::vector<int> {
         std::vector<int> data;
         data.push_back(6);
         data.push_back(2);
@@ -22,7 +27,7 @@ namespace Util {
         return data;
     }
 
-    auto PrintData(std::vector<int> data) -> void {
+    export auto PrintData(std::vector<int> data) -> void {
         std::vector<int>::iterator it;
 
         for(it = data.begin(); it != data.end(); it++) {
@@ -32,3 +37,4 @@ namespace Util {
         std::cout << std::endl;
     }
 }
+
