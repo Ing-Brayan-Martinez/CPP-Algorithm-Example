@@ -10,6 +10,8 @@ export module util.object;
 
 export class Object {
 public:
+    virtual ~Object() = default;
+
     virtual std::string ToString() {
         return "";
     };

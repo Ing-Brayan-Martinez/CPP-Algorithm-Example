@@ -5,5 +5,4 @@ module;
 
 export module structure.arraylist;
 
-import structure.list;
 

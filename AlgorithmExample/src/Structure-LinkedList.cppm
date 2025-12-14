@@ -5,5 +5,4 @@ module;
 
 export module structure.linkedlist;
 
-import structure.list;
 

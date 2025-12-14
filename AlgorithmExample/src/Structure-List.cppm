@@ -5,10 +5,9 @@ module;
 
 #include <iostream>
 #include <string>
+#include <utility>
 
 export module structure.list;
-
-import util.object;
 
 namespace Structure {
 
@@ -30,7 +29,7 @@ namespace Structure {
 
                 explicit Node(T value, int index, Node<T> *next = nullptr)
                 {
-                    this->value = value;
+                    this->value = std::move(value);
                     this->next = next;
                     this->index = index;
                 }
@@ -81,12 +80,9 @@ namespace Structure {
      *
      * @tparam T Tipo generico.
      */
-    template<typename T>
-    export class List: Object {
-
-        private:
-            Node<T> *chain;
-            int length;
+    template<typename T> class List {
+        Node<T> *chain{};
+        int length;
 
         public:
 
@@ -139,7 +135,7 @@ namespace Structure {
                 return value;
             }
 
-            int Length()
+           int Length()
             {
                 return this->length;
             }
@@ -176,7 +172,7 @@ namespace Structure {
 
             }
 
-            std::string ToString() override
+            std::string ToString()
             {
 
                 std::string str = "List [";
@@ -205,117 +201,114 @@ namespace Structure {
      * Lista simple de tipo int.
      *
      */
-    export class ListInteger: Object {
-
-    private:
+    export class ListInteger {
         Node<int> *chain;
         int length;
 
-    public:
+        public:
 
-        explicit ListInteger()
-        {
-            chain = nullptr;
-            length = -1;
-        }
+            explicit ListInteger()
+            {
+                chain = nullptr;
+                length = -1;
+            }
 
-        void Add(int value)
-        {
-            length++;
+            void Add(int value)
+            {
+                length++;
 
-            if (chain == nullptr) {
-                chain = new Node(value, length);
+                if (chain == nullptr) {
+                    chain = new Node(value, length);
 
-            } else  {
-                auto newNode = new Node(value, length, chain);
-                chain = newNode;
+                } else  {
+                    auto newNode = new Node(value, length, chain);
+                    chain = newNode;
+
+                }
+            }
+
+            int Get(int index)
+            {
+                int value = 0;
+
+                Node<int> *last = chain;
+
+                if (last == nullptr) {
+                    throw std::exception();
+
+                } else if (last->GetIndex() == index) {
+                    value = last->GetValue();
+
+                } else {
+                    while (last->GetNext() != nullptr) {
+                        last = last->GetNext();
+                        if (last->GetIndex() == index) {
+                            value = last->GetValue();
+                            break;
+                        }
+                    }
+
+                }
+
+                return value;
+            }
+
+            int Length()
+            {
+                return this->length;
+            }
+
+            void Remove(int index)
+            {
+                Node<int> *last;
+                Node<int> *del;
+
+                last = chain;
+
+                if (last == nullptr) {
+                    throw std::exception();
+
+
+                } else if (index == length) {
+                    chain = last->GetNext();
+                    length--;
+
+                } else {
+                    while (last->GetNext() != nullptr) {
+                        if (last->GetIndex() == index + 1) {
+                            break;
+                        }
+                        last = last->GetNext();
+                    }
+
+                    del = last->GetNext();
+                    last->SetNext(del->GetNext());
+                    chain = last;
+                    length--;
+
+                }
 
             }
-        }
 
-        int Get(int index)
-        {
-            Node<int> *last;
-            int value = 0;
+            std::string ToString()
+            {
 
-            last = chain;
+                std::string str = "List [";
 
-            if (last == nullptr) {
-                throw std::exception();
+                for (int i = 0; i < length; i++) {
+                    int tmp = this->Get(i) ;
 
-            } else if (last->GetIndex() == index) {
-                value = last->GetValue();
+                    str.append(std::to_string(tmp));
 
-            } else {
-                while (last->GetNext() != nullptr) {
-                    last = last->GetNext();
-                    if (last->GetIndex() == index) {
-                        value = last->GetValue();
-                        break;
+                    if (i < length-1) {
+                        str.append(", ");
                     }
                 }
 
+                str.append("];");
+
+                return str;
             }
-
-            return value;
-        }
-
-        int Length()
-        {
-            return this->length;
-        }
-
-        void Remove(int index)
-        {
-            Node<int> *last;
-            Node<int> *del;
-
-            last = chain;
-
-            if (last == nullptr) {
-                throw std::exception();
-
-
-            } else if (index == length) {
-                chain = last->GetNext();
-                length--;
-
-            } else {
-                while (last->GetNext() != nullptr) {
-                    if (last->GetIndex() == index + 1) {
-                        break;
-                    }
-                    last = last->GetNext();
-                }
-
-                del = last->GetNext();
-                last->SetNext(del->GetNext());
-                chain = last;
-                length--;
-
-            }
-
-        }
-
-        std::string ToString() override
-        {
-
-            std::string str = "List [";
-
-            for (int i = 0; i < length; i++) {
-                int tmp = this->Get(i) ;
-
-                str.append(std::to_string(tmp));
-
-                if (i < length-1) {
-                    str.append(", ");
-                }
-            }
-
-            str.append("];");
-
-            return str;
-        }
 
     };
 
@@ -323,224 +316,222 @@ namespace Structure {
     * Lista simple de tipo string.
     *
     */
-    export class ListString: Object {
-
-    private:
+    export class ListString {
         Node<std::string> *chain;
         int length;
 
-    public:
+        public:
 
-        explicit ListString()
-        {
-            chain = nullptr;
-            length = -1;
-        }
-
-        void Add(const std::string& value)
-        {
-            length++;
-
-            if (chain == nullptr) {
-                chain = new Node(value, length);
-
-            } else  {
-                auto *newNode = new Node(value, length, chain);
-                chain = newNode;
-
-            }
-        }
-
-        std::string Get(int index)
-        {
-            Node<std::string> *last;
-            std::string value;
-
-            last = chain;
-
-            if (last == nullptr) {
-                throw std::exception();
-
-            } else if (last->GetIndex() == index) {
-                value = last->GetValue();
-
-            } else {
-                while (last->GetNext() != nullptr) {
-                    last = last->GetNext();
-                    if (last->GetIndex() == index) {
-                        value = last->GetValue();
-                        break;
-                    }
-                }
-
+            explicit ListString()
+            {
+                chain = nullptr;
+                length = -1;
             }
 
-            return value;
-        }
+            void Add(const std::string& value)
+            {
+                length++;
 
-        int Length()
-        {
-            return this->length;
-        }
+                if (chain == nullptr) {
+                    chain = new Node(value, length);
 
-        void Remove(int index) {
+                } else  {
+                    auto *newNode = new Node(value, length, chain);
+                    chain = newNode;
 
-            //eliminar el utltimo elemento, de una lista de 1 elemento
-            if (index == 0 && length == 0) {
-                //guardar referencia al elemento a eliminar
-                Node<std::string> *eliminar = chain;
-
-                //recortar la cadena omitiendo el ultimo elemento
-                chain = eliminar->GetNext();
-
-                //eliminar de la memoria
-                delete eliminar;
-
-                //decrementar el contador
-                length--;
-
-            //eliminar el utltimo elemento, de una lista de 2 elemento
-            } else if (index == 0 && length == 1) {
-                //guardar referencia al elemento a eliminar
-                Node<std::string> *eliminar = chain;
-
-                //recortar la cadena omitiendo el ultimo elemento
-                chain = eliminar->GetNext();
-
-                //eliminar de la memoria
-                delete eliminar;
-
-                //decrementar el contador
-                length--;
-
-            //eliminar el utltimo elemento, de una lista de 3 elemento o mas
-            } else if (index == 0 && length > 1 && index <= length) {
-                //guardar referencia al elemento a eliminar
-                Node<std::string> *eliminar = chain;
-
-                //recortar la cadena omitiendo el ultimo elemento
-                chain = eliminar->GetNext();
-
-                //eliminar de la memoria
-                delete eliminar;
-
-                //decrementar el contador
-                length--;
-
-            //eliminar el penutltimo elemento, de una lista de 2 elemento
-            } else if (index == 1 && length == 1) {
-                //guardar referencia al elemento a eliminar
-                Node<std::string> *eliminar = chain;
-
-                //recortar la cadena omitiendo el ultimo elemento
-                chain = eliminar->GetNext();
-
-                //eliminar de la memoria
-                delete eliminar;
-
-                //decrementar el contador
-                length--;
-
-            //eliminar el penutltimo elemento, de una lista de 3 elemento o mas
-            } else if (index > 0 && index < length) {
-                Node<std::string> *eliminar = nullptr;
-                Node<std::string> *anterior = chain;
-
-                //recorer hasta encontrar el elemento anterior
-                while (anterior != nullptr) {
-                    if (anterior->GetIndex() == index + 1) {
-                        break;
-                    }
-                    anterior = anterior->GetNext();
                 }
-
-                //guardar referencia al elemento a eliminar que es el siguiente
-                eliminar = anterior->GetNext();
-
-                //saltar la referencia al siguiente nodo para omitir
-                anterior->SetNext(eliminar->GetNext());
-
-                //eliminar de la memoria
-                delete eliminar;
-
-                //decrementar el contador
-                length--;
-
-            //eliminar el primer elementos de la lista
-            } else if (index == length) {
-                Node<std::string> *eliminar = nullptr;
-                Node<std::string> *anterior = chain;
-
-                //recorer hasta encontrar el elemento anterior
-                while (anterior != nullptr) {
-                    if (anterior->GetIndex() == index + 1) {
-                        break;
-                    }
-                    anterior = anterior->GetNext();
-                }
-
-                //guardar referencia al elemento a eliminar que es el siguiente
-                eliminar = anterior->GetNext();
-
-                //eliminar referencia
-                anterior->SetNext(nullptr);
-
-                //eliminar de la memoria
-                delete eliminar;
-
-                //decrementar el contador
-                length--;
-
-            //si no coincide el parametro
-            } else {
-                throw std::exception();
-
             }
-        }
 
-        std::string ToString() override
-        {
+            std::string Get(int index)
+            {
+                Node<std::string> *last;
+                std::string value;
 
-            std::string str = "List [";
+                last = chain;
 
-            if (length == 0) {
-                std::string tmp = this->Get(0);
-                if (!tmp.empty()) {
-                    str.append(tmp);
-                }
+                if (last == nullptr) {
+                    throw std::exception();
 
-            } else if (length == 1) {
-                for (int i = 0; i <= length; i++) {
-                    std::string tmp = this->Get(i);
+                } else if (last->GetIndex() == index) {
+                    value = last->GetValue();
 
-                    if (!tmp.empty()) {
-                        str.append(tmp);
-
-                        if (i == 0) {
-                            str.append(", ");
+                } else {
+                    while (last->GetNext() != nullptr) {
+                        last = last->GetNext();
+                        if (last->GetIndex() == index) {
+                            value = last->GetValue();
+                            break;
                         }
                     }
 
                 }
-            } else {
-                for (int i = 0; i < length; i++) {
-                    std::string tmp = this->Get(i);
 
-                    if (!tmp.empty()) {
-                        str.append(tmp);
+                return value;
+            }
 
-                        if (i < length-1) {
-                            str.append(", ");
+            int Length()
+            {
+                return this->length;
+            }
+
+            void Remove(int index) {
+
+                //eliminar el utltimo elemento, de una lista de 1 elemento
+                if (index == 0 && length == 0) {
+                    //guardar referencia al elemento a eliminar
+                    Node<std::string> *eliminar = chain;
+
+                    //recortar la cadena omitiendo el ultimo elemento
+                    chain = eliminar->GetNext();
+
+                    //eliminar de la memoria
+                    delete eliminar;
+
+                    //decrementar el contador
+                    length--;
+
+                //eliminar el utltimo elemento, de una lista de 2 elemento
+                } else if (index == 0 && length == 1) {
+                    //guardar referencia al elemento a eliminar
+                    Node<std::string> *eliminar = chain;
+
+                    //recortar la cadena omitiendo el ultimo elemento
+                    chain = eliminar->GetNext();
+
+                    //eliminar de la memoria
+                    delete eliminar;
+
+                    //decrementar el contador
+                    length--;
+
+                //eliminar el utltimo elemento, de una lista de 3 elemento o mas
+                } else if (index == 0 && length > 1 && index <= length) {
+                    //guardar referencia al elemento a eliminar
+                    Node<std::string> *eliminar = chain;
+
+                    //recortar la cadena omitiendo el ultimo elemento
+                    chain = eliminar->GetNext();
+
+                    //eliminar de la memoria
+                    delete eliminar;
+
+                    //decrementar el contador
+                    length--;
+
+                //eliminar el penutltimo elemento, de una lista de 2 elemento
+                } else if (index == 1 && length == 1) {
+                    //guardar referencia al elemento a eliminar
+                    Node<std::string> *eliminar = chain;
+
+                    //recortar la cadena omitiendo el ultimo elemento
+                    chain = eliminar->GetNext();
+
+                    //eliminar de la memoria
+                    delete eliminar;
+
+                    //decrementar el contador
+                    length--;
+
+                //eliminar el penutltimo elemento, de una lista de 3 elemento o mas
+                } else if (index > 0 && index < length) {
+                    Node<std::string> *eliminar = nullptr;
+                    Node<std::string> *anterior = chain;
+
+                    //recorer hasta encontrar el elemento anterior
+                    while (anterior != nullptr) {
+                        if (anterior->GetIndex() == index + 1) {
+                            break;
                         }
+                        anterior = anterior->GetNext();
                     }
+
+                    //guardar referencia al elemento a eliminar que es el siguiente
+                    eliminar = anterior->GetNext();
+
+                    //saltar la referencia al siguiente nodo para omitir
+                    anterior->SetNext(eliminar->GetNext());
+
+                    //eliminar de la memoria
+                    delete eliminar;
+
+                    //decrementar el contador
+                    length--;
+
+                //eliminar el primer elementos de la lista
+                } else if (index == length) {
+                    Node<std::string> *eliminar = nullptr;
+                    Node<std::string> *anterior = chain;
+
+                    //recorer hasta encontrar el elemento anterior
+                    while (anterior != nullptr) {
+                        if (anterior->GetIndex() == index + 1) {
+                            break;
+                        }
+                        anterior = anterior->GetNext();
+                    }
+
+                    //guardar referencia al elemento a eliminar que es el siguiente
+                    eliminar = anterior->GetNext();
+
+                    //eliminar referencia
+                    anterior->SetNext(nullptr);
+
+                    //eliminar de la memoria
+                    delete eliminar;
+
+                    //decrementar el contador
+                    length--;
+
+                //si no coincide el parametro
+                } else {
+                    throw std::exception();
 
                 }
             }
 
-            str.append("];");
+            std::string ToString()
+            {
 
-            return str;
-        }
+                std::string str = "List [";
+
+                if (length == 0) {
+                    std::string tmp = this->Get(0);
+                    if (!tmp.empty()) {
+                        str.append(tmp);
+                    }
+
+                } else if (length == 1) {
+                    for (int i = 0; i <= length; i++) {
+                        std::string tmp = this->Get(i);
+
+                        if (!tmp.empty()) {
+                            str.append(tmp);
+
+                            if (i == 0) {
+                                str.append(", ");
+                            }
+                        }
+
+                    }
+                } else {
+                    for (int i = 0; i < length; i++) {
+                        std::string tmp = this->Get(i);
+
+                        if (!tmp.empty()) {
+                            str.append(tmp);
+
+                            if (i < length-1) {
+                                str.append(", ");
+                            }
+                        }
+
+                    }
+                }
+
+                str.append("];");
+
+                return str;
+            }
 
     };
 }
