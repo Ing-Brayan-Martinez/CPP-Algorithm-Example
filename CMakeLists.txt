@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.20)
 
 # Project name
 project(CPP_Algorithm_Example VERSION 0.0.1)
@@ -10,9 +10,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Enable testing from execution in the CLI
 enable_testing()
 
-# Define library Google Test
+# Define library Google Test (latest stable version)
 include(FetchContent)
-FetchContent_Declare(googletest URL https://github.com/google/googletest/archive/refs/tags/release-1.8.1.zip)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG        v1.16.0
+)
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 

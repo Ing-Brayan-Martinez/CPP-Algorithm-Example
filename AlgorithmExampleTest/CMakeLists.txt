@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.20)
 
 # Project name
 project(AlgorithmExampleTest VERSION 0.0.1)
@@ -13,7 +13,8 @@ add_executable(AlgorithmExampleTest
         src/Ordering-QuickSortTest.cpp
         src/Ordering-SelectionSortTest.cpp
         src/Dinamic-FactorialTest.cpp
-        src/Structure-ListTest.cpp
+        src/Structure-ArrayListTest.cpp
+        src/Structure-LinkedListTest.cpp
         src/Dinamic-FibonacciTest.cpp
         src/Dinamic-FizzBuzzTest.cpp)
 
