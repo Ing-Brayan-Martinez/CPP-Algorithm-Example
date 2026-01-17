@@ -1,11 +1,15 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.28)
 
 # Project name
-project(AlgorithmExampleTest VERSION 0.0.1)
+project(AlgorithmExampleTest LANGUAGES CXX)
+
+# Force CMake to attempt scanning even if the compiler is being quiet about it
+set(CMAKE_CXX_SCAN_FOR_MODULES ON)
 
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Define executable
 add_executable(AlgorithmExampleTest
