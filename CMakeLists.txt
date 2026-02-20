@@ -27,7 +27,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_subdirectory(AlgorithmExample)
 
 # Define executable
-#add_subdirectory(AlgorithmExampleExec)
+add_subdirectory(AlgorithmExampleExec)
 
 
 

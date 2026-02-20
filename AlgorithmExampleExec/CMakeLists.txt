@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Define a executable
-add_executable(AlgorithmExampleExec src/main.cxx)
+add_executable(AlgorithmExampleExec src/main.cpp)
 
 # Link libraries
 target_link_libraries(AlgorithmExampleExec AlgorithmExample)

@@ -11,76 +11,75 @@ export module structure.list;
 
 namespace Structure {
 
-    namespace {
-        /**
-         * Nodo de la lista.
-         *
-         * @tparam T Tipo generico.
-         */
-        template<typename T>
-        class Node {
+    /**
+     * Nodo de la listas, es privado en este espacio de nombres.
+     *
+     * @tparam T Tipo generico.
+     */
+    template<typename T>
+    class Node {
 
-            private:
-                Node<T> *next;
-                T value;
-                int index{};
+        private:
+            Node<T> *next;
+            T value;
+            int index{};
 
-            public:
+        public:
 
-                explicit Node(T value, int index, Node<T> *next = nullptr)
-                {
-                    this->value = std::move(value);
-                    this->next = next;
-                    this->index = index;
-                }
+            explicit Node(T value, int index, Node<T> *next = nullptr)
+            {
+                this->value = std::move(value);
+                this->next = next;
+                this->index = index;
+            }
 
-                T GetValue()
-                {
-                    return this->value;
-                }
+            T GetValue()
+            {
+                return this->value;
+            }
 
-                Node<T> * GetNext()
-                {
-                    return this->next;
-                }
+            Node<T> * GetNext()
+            {
+                return this->next;
+            }
 
-                int GetIndex()
-                {
-                    return this->index;
-                }
+            int GetIndex()
+            {
+                return this->index;
+            }
 
-                void SetNext(Node<T> * node)
-                {
-                    this->next = node;
-                }
+            void SetNext(Node<T> * node)
+            {
+                this->next = node;
+            }
 
-                void Finish()
-                {
-                    this->next = NULL;
-                }
+            void Finish()
+            {
+                this->next = NULL;
+            }
 
-                bool operator==(const Node<T>& b)
-                {
-                    return (b != NULL) && (this->index == b.GetIndex())
-                           && (this->value == b.GetValue());
-                }
+            bool operator==(const Node<T>& b)
+            {
+                return (b != NULL) && (this->index == b.GetIndex())
+                       && (this->value == b.GetValue());
+            }
 
-                bool operator!=(const Node<T>& b)
-                {
-                    return (b != NULL) && (this->index != b.GetIndex())
-                           && (this->value != b.GetValue());
-                }
+            bool operator!=(const Node<T>& b)
+            {
+                return (b != NULL) && (this->index != b.GetIndex())
+                       && (this->value != b.GetValue());
+            }
 
-        };
+    };
 
-    }
 
     /**
      * Lista simple de tipo generico.
      *
      * @tparam T Tipo generico.
      */
-    template<typename T> class List {
+    export template<typename T>
+    class List {
         Node<T> *chain{};
         int length;
 

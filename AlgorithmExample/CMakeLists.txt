@@ -12,23 +12,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Define library
-add_library(AlgorithmExample INTERFACE IMPORTED)
+add_library(AlgorithmExample STATIC)
 
 # This tells CMake these files are C++ Modules
 target_sources(AlgorithmExample
-        INTERFACE
+        PUBLIC
         FILE_SET CXX_MODULES FILES
-            src/Util-Object.cppm
-            src/Structure-List.cppm
-            src/Dinamic-FizzBuzz.cppm
-            src/Dinamic-Factorial.cppm
-            src/Dinamic-Fibonacci.cppm
-            src/Ordering-BubbleSort.cppm
-            src/Ordering-SelectionSort.cppm
-            src/Ordering-QuickSort.cppm
-            src/Util-Data.cppm
-            src/Structure-ArrayList.cppm  # Depends on Structure-List
-            src/Structure-LinkedList.cppm # Depends on Structure-List
+        src/Util-Object.cpp
+        src/Structure-List.cpp
+        src/Dinamic-FizzBuzz.cpp
+        src/Dinamic-Factorial.cpp
+        src/Dinamic-Fibonacci.cpp
+        src/Ordering-BubbleSort.cpp
+        src/Ordering-SelectionSort.cpp
+        src/Ordering-QuickSort.cpp
+        src/Util-Data.cpp
+        src/Structure-ArrayList.cpp  # Depends on Structure-List
+        src/Structure-LinkedList.cpp # Depends on Structure-List
 )
 
 set_property(TARGET AlgorithmExample

@@ -1,9 +1,9 @@
+#include <iostream>
 
-
-//import dinamic.factorial;
+import dinamic.factorial;
 
 int main(){
-    /*
+
     int num = 5;
 
     unsigned int result = Dinamic::Factorial(num);
@@ -17,6 +17,6 @@ int main(){
     }
 
     std::cout << std::endl << "Test Passed!" << std::endl;
-    */
+
     return 0;
 }
