@@ -23,7 +23,7 @@ jobs:
         run: sudo apt update
 
       - name: Install gcc 14
-        run: sudo apt install -y gcc-14 g++-14
+        run: sudo apt install -y gcc-14 g++-14 ninja-build
 
       - name: View version gcc 14
         run: gcc-14 --version
@@ -37,7 +37,7 @@ jobs:
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_CXX_SCAN_FOR_MODULES=OFF -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Test
         working-directory: ${{github.workspace}}/build
