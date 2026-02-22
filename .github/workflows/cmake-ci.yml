@@ -21,6 +21,17 @@ jobs:
       - name: Checkout Github Actions
         uses: actions/checkout@v2
 
+      - name: Install gcc 14
+        uses: apt install gcc-14 g++-14
+
+      - name: View version gcc 14
+        uses: gcc-14 --version
+
+      - name: Set default gcc 14
+        uses: |
+          update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100 \
+          update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
+
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
