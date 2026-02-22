@@ -21,6 +21,9 @@ jobs:
       - name: Checkout Github Actions
         uses: actions/checkout@v2
 
+      - name: Update repository
+        run: apt update
+
       - name: Install gcc 14
         run: apt install gcc-14 g++-14
 
