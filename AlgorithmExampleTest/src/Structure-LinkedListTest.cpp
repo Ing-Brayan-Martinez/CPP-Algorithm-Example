@@ -81,7 +81,7 @@ TEST(LinkedListTest, BasicAssertions) {
     //words.Remove(0);
     cout << "Remove(0); " << endl;
 
-    for (int i = 0; i <= words.Length(); ++i) {
+    for (int i = 0; i < words.Length(); ++i) {
         string temp = words.Get(i);
         if (!temp.empty()) {
             cout << "El valor es: " << temp << endl;
