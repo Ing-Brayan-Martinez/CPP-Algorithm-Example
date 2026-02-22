@@ -32,18 +32,18 @@ add_subdirectory(AlgorithmExampleExec)
 
 
 
-## Enable testing from execution in the CLI
-#enable_testing()
-#
-## Define library Google Test (latest stable version)
-#include(FetchContent)
-#FetchContent_Declare(
-#    googletest
-#    GIT_REPOSITORY https://github.com/google/googletest.git
-#    GIT_TAG        v1.16.0
-#)
-#set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-#FetchContent_MakeAvailable(googletest)
+# Enable testing from execution in the CLI
+enable_testing()
+
+# Define library Google Test (latest stable version)
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG        v1.16.0
+)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
 # Define unit tests executable
-#add_subdirectory(AlgorithmExampleTest)
+add_subdirectory(AlgorithmExampleTest)
