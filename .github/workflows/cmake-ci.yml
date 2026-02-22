@@ -22,18 +22,18 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update repository
-        run: apt update
+        run: sudo apt update
 
       - name: Install gcc 14
-        run: apt install gcc-14 g++-14
+        run: sudo apt install gcc-14 g++-14
 
       - name: View version gcc 14
         run: gcc-14 --version
 
       - name: Set default gcc 14
         run: |
-          update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100 \
-          update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100 \
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
 
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
