@@ -18,17 +18,15 @@ add_library(AlgorithmExample STATIC)
 target_sources(AlgorithmExample
         PUBLIC
         FILE_SET CXX_MODULES FILES
-        src/Util-Object.cpp
-        src/Structure-List.cpp
         src/Dinamic-FizzBuzz.cpp
         src/Dinamic-Factorial.cpp
         src/Dinamic-Fibonacci.cpp
         src/Ordering-BubbleSort.cpp
         src/Ordering-SelectionSort.cpp
         src/Ordering-QuickSort.cpp
+        src/Structure-List.cpp
+        src/Util-Object.cpp
         src/Util-Data.cpp
-        src/Structure-ArrayList.cpp  # Depends on Structure-List
-        src/Structure-LinkedList.cpp # Depends on Structure-List
 )
 
 set_property(TARGET AlgorithmExample

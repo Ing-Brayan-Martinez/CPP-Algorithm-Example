@@ -8,7 +8,11 @@ module;
 #include <stdexcept>
 #include <utility>
 
+import util.object;
+
 export module structure.list;
+
+
 
 namespace Structure {
 
@@ -73,6 +77,19 @@ namespace Structure {
 
     };
 
+    /**
+     * Concepto para identificar si un tipo es una cadena de texto.
+     */
+    template <typename T>
+    concept IsString = std::same_as<std::decay_t<T>, std::string> ||
+                       std::same_as<std::decay_t<T>, std::string_view> ||
+                       std::same_as<std::decay_t<T>, const char*> ||
+                       std::same_as<std::decay_t<T>, char*>;
+    /**
+     * Concepto de C++20 que verifica si T hereda de la clase Object.
+     */
+    template <typename T>
+    concept IsDerivedFromObject = std::derived_from<T, Object>;
 
     /**
      * Lista simple de tipo generico.
@@ -81,120 +98,138 @@ namespace Structure {
      */
     export template<typename T>
     class List {
+    private:
         Node<T> *chain{};
         int length;
 
-        public:
+    public:
+        explicit List()
+        {
+            chain = nullptr;
+            length = 0;
+        }
 
-            explicit List()
-            {
-                chain = NULL;
-                length = 0;
+        void Add(T value)
+        {
+            if (chain == nullptr) {
+                chain = new Node(value, length);
+
+            } else  {
+                auto newNode = new Node(value, length, chain);
+                chain = newNode;
+
+            }
+            length++;
+        }
+
+        T Get(int index)
+        {
+            if (index < 0 || index >= length) {
+                throw std::out_of_range("Indice fuera de rango");
             }
 
-            void Add(T value)
-            {
-                Node<T> *newNode = NULL;
+            T value;
 
-                if (chain == NULL) {
-                    chain = new Node(value);
+            Node<T> *last = chain;
 
-                } else  {
-                    newNode = new Node(value, chain, length);
-                    chain = newNode;
+            if (last == nullptr) {
+                throw std::exception();
 
+            } else if (last->GetIndex() == index) {
+                value = last->GetValue();
+
+            } else {
+                while (last->GetNext() != nullptr) {
+                    last = last->GetNext();
+                    if (last->GetIndex() == index) {
+                        value = last->GetValue();
+                        break;
+                    }
                 }
 
-                length++;
             }
 
-            T Get(int index)
-            {
-                Node<T> *last = NULL;
-                T value;
+            return value;
+        }
 
-                last = chain;
+        int Length()
+        {
+            return this->length;
+        }
 
-                if (last == NULL) {
+        void Remove(int index)
+        {
+            Node<T> *last = nullptr;
+            Node<T> *del = nullptr;
+
+            last = chain;
+
+            if (last == nullptr) {
+                throw std::exception();
+
+            } else if (index == length) {
+                chain = last->GetNext();
+                length--;
+
+            } else {
+                while (last->GetNext() != nullptr) {
+                    if (last->GetIndex() == index + 1) {
+                        break;
+                    }
+                    last = last->GetNext();
+                }
+
+                del = last->GetNext();
+                last->SetNext(del->GetNext());
+                chain = last;
+                length--;
+
+            }
+
+        }
+
+        std::string ToString()
+        {
+            std::string str = "List [";
+
+            for (int i = 0; i < this->Length(); i++) {
+                T tmp = this->Get(i) ;
+
+                // Caso 1: Es un número (int, float, etc.) -> Usamos std::to_string
+                if constexpr (std::is_arithmetic_v<T>) {
+                    str.append(std::to_string(tmp));
+                }
+                // Caso 2: Es una cadena -> Usamos directamente
+                else if constexpr (IsString<T>) {
+                    str.append(tmp);
+                }
+                // Caso 3: Es un objeto que hereda de la clase Object -> Invocamos su ToString()
+                else if constexpr (IsDerivedFromObject<T>) {
+                    return str.append(tmp.ToString());
+                }
+                // Caso 4: Tipo desconocido u objeto que no hereda de Object, es un error
+                else {
                     throw std::exception();
-
-                } else if (last->GetIndex() == index) {
-                    value = last->GetValue();
-
-                } else {
-                    while (last->GetNext() != NULL) {
-                        last = last->GetNext();
-                        if (last->GetIndex() == index) {
-                            value = last->GetValue();
-                            break;
-                        }
-                    }
-
                 }
 
-                return value;
-            }
-
-           int Length()
-            {
-                return this->length;
-            }
-
-            void Remove(int index)
-            {
-                Node<T> *last = NULL;
-                Node<T> *del = NULL;
-
-                last = chain;
-
-                if (last == NULL) {
-                    throw std::exception();
-
-
-                } else if (index == length) {
-                    chain = last->GetNext();
-                    length--;
-
-                } else {
-                    while (last->GetNext() != NULL) {
-                        if (last->GetIndex() == index + 1) {
-                            break;
-                        }
-                        last = last->GetNext();
-                    }
-
-                    del = last->GetNext();
-                    last->SetNext(del->GetNext());
-                    chain = last;
-                    length--;
-
+                if (i < this->Length()-1) {
+                    str.append(", ");
                 }
-
             }
 
-            std::string ToString()
-            {
+            str.append("];");
 
-                std::string str = "List [";
+            return str;
+        }
 
-                for (int i = 0; i < length; i++) {
-                    T tmp = this->Get(i) ;
-
-
-
-
-                    if (i < length-1) {
-                        //str = str + ", ";
-                        str.append(", ");
-                    }
-                }
-
-                //str + "];";
-                str.append("];");
-
-                return str;
+        ~List() {
+            Node<T> *current = chain;
+            while (current != nullptr) {
+                Node<T> *next = current->GetNext();
+                delete current;
+                current = next;
             }
-
+        }
     };
 
     /**
@@ -202,114 +237,130 @@ namespace Structure {
      *
      */
     export class ListInteger {
+    private:
         Node<int> *chain;
         int length;
 
-        public:
+    public:
+        explicit ListInteger()
+        {
+            chain = nullptr;
+            length = 0;
+        }
 
-            explicit ListInteger()
-            {
-                chain = nullptr;
-                length = -1;
-            }
+        void Add(int value)
+        {
+            if (chain == nullptr) {
+                chain = new Node(value, length);
 
-            void Add(int value)
-            {
-                length++;
-
-                if (chain == nullptr) {
-                    chain = new Node(value, length);
-
-                } else  {
-                    auto newNode = new Node(value, length, chain);
-                    chain = newNode;
-
-                }
-            }
-
-            int Get(int index)
-            {
-                int value = 0;
-
-                Node<int> *last = chain;
-
-                if (last == nullptr) {
-                    throw std::exception();
-
-                } else if (last->GetIndex() == index) {
-                    value = last->GetValue();
-
-                } else {
-                    while (last->GetNext() != nullptr) {
-                        last = last->GetNext();
-                        if (last->GetIndex() == index) {
-                            value = last->GetValue();
-                            break;
-                        }
-                    }
-
-                }
-
-                return value;
-            }
-
-            int Length()
-            {
-                return this->length;
-            }
-
-            void Remove(int index)
-            {
-                Node<int> *last;
-                Node<int> *del;
-
-                last = chain;
-
-                if (last == nullptr) {
-                    throw std::exception();
-
-
-                } else if (index == length) {
-                    chain = last->GetNext();
-                    length--;
-
-                } else {
-                    while (last->GetNext() != nullptr) {
-                        if (last->GetIndex() == index + 1) {
-                            break;
-                        }
-                        last = last->GetNext();
-                    }
-
-                    del = last->GetNext();
-                    last->SetNext(del->GetNext());
-                    chain = last;
-                    length--;
-
-                }
+            } else  {
+                auto newNode = new Node(value, length, chain);
+                chain = newNode;
 
             }
+            length++;
+        }
 
-            std::string ToString()
-            {
+        int Get(int index)
+        {
+            if (index < 0 || index >= length) {
+                throw std::out_of_range("Indice fuera de rango");
+            }
 
-                std::string str = "List [";
+            int value = 0;
 
-                for (int i = 0; i < length; i++) {
-                    int tmp = this->Get(i) ;
+            Node<int> *last = chain;
 
-                    str.append(std::to_string(tmp));
+            if (last == nullptr) {
+                throw std::exception();
 
-                    if (i < length-1) {
-                        str.append(", ");
+            } else if (last->GetIndex() == index) {
+                value = last->GetValue();
+
+            } else {
+                while (last->GetNext() != nullptr) {
+                    last = last->GetNext();
+                    if (last->GetIndex() == index) {
+                        value = last->GetValue();
+                        break;
                     }
                 }
 
-                str.append("];");
-
-                return str;
             }
 
+            return value;
+        }
+
+        int Length()
+        {
+            return this->length;
+        }
+
+        void Remove(int index) {
+            if (index < 0 || index >= length || chain == nullptr) {
+                throw std::out_of_range("Índice fuera de rango");
+            }
+
+            Node<int>* toDelete = nullptr;
+
+            // Caso 1: Eliminar el primer nodo (la cabeza)
+            if (index == length - 1) {
+                // Nota: En tu implementación de Add, el último agregado es el primero en la cadena
+                toDelete = chain;
+                chain = chain->GetNext();
+            }
+            // Caso 2: Eliminar un nodo intermedio o el final
+            else {
+                Node<int>* prev = chain;
+
+                // Buscamos el nodo anterior al que queremos borrar
+                // Basándonos en tu lógica de índices descendentes
+                while (prev->GetNext() != nullptr && prev->GetNext()->GetIndex() != index) {
+                    prev = prev->GetNext();
+                }
+
+                toDelete = prev->GetNext();
+                if (toDelete != nullptr) {
+                    prev->SetNext(toDelete->GetNext());
+                }
+            }
+
+            if (toDelete) {
+                delete toDelete;
+                length--;
+                // Importante: Si guardas el índice dentro del nodo,
+                // aquí deberías recorrer el resto para actualizarlos,
+                // pero es mejor calcular el índice al vuelo.
+            }
+        }
+
+        std::string ToString()
+        {
+            std::string str = "List [";
+
+            for (int i = 0; i < this->Length(); i++) {
+                int tmp = this->Get(i) ;
+
+                str.append(std::to_string(tmp));
+
+                if (i < this->Length()-1) {
+                    str.append(", ");
+                }
+            }
+
+            str.append("];");
+
+            return str;
+        }
+
+        ~ListInteger() {
+            Node<int> *current = chain;
+            while (current != nullptr) {
+                Node<int> *next = current->GetNext();
+                delete current;
+                current = next;
+            }
+        }
     };
 
     /**
@@ -318,64 +369,63 @@ namespace Structure {
     */
     export class ListString {
     private:
-        Node<std::string> *head;
-        int count; // Renombrado a 'count' para que represente la cantidad REAL de elementos
+        Node<std::string> *chain;
+        int length;
 
     public:
-        // Constructor
         explicit ListString() {
-            head = nullptr;
-            count = 0;
+            chain = nullptr;
+            length = 0;
         }
 
-        // DESTRUCTOR: Obligatorio en C++ para evitar Fugas de Memoria (Memory Leaks)
-        ~ListString() {
-            Node<std::string> *current = head;
-            while (current != nullptr) {
-                Node<std::string> *next = current->GetNext();
-                delete current;
-                current = next;
-            }
-        }
-
-        // Agrega un elemento AL FINAL de la lista para mantener el orden natural (FIFO)
         void Add(const std::string& value) {
-            // Se añade 'count' como segundo parámetro para que coincida con tu constructor original de Node(value, index)
-            Node<std::string> *newNode = new Node(value, count);
 
-            if (head == nullptr) {
-                head = newNode;
-            } else {
-                Node<std::string> *current = head;
-                while (current->GetNext() != nullptr) {
-                    current = current->GetNext();
-                }
-                current->SetNext(newNode);
+            if (chain == nullptr) {
+                chain = new Node(value, length);
+
+            } else  {
+                auto newNode = new Node(value, length, chain);
+                chain = newNode;
+
             }
-            count++;
+            length++;
         }
 
-        // Obtener un elemento por su índice real
         std::string Get(int index) {
-            if (index < 0 || index >= count) {
+            if (index < 0 || index >= length) {
                 throw std::out_of_range("Indice fuera de rango");
             }
 
-            Node<std::string> *current = head;
-            for (int i = 0; i < index; i++) {
-                current = current->GetNext();
+            std::string value;
+
+            Node<std::string> *last = chain;
+
+            if (last == nullptr) {
+                throw std::exception();
+
+            } else if (last->GetIndex() == index) {
+                value = last->GetValue();
+
+            } else {
+                while (last->GetNext() != nullptr) {
+                    last = last->GetNext();
+                    if (last->GetIndex() == index) {
+                        value = last->GetValue();
+                        break;
+                    }
+                }
+
             }
-            return current->GetValue();
+
+            return value;
         }
 
-        // Devuelve la longitud de la lista
         int Length() {
-            return this->count;
+            return this->length;
         }
 
-        // Remueve un elemento de la lista por índice
         void Remove(int index) {
-            if (index < 0 || index >= count) {
+            if (index < 0 || index >= length) {
                 throw std::out_of_range("Indice fuera de rango");
             }
 
@@ -383,12 +433,12 @@ namespace Structure {
 
             // Caso 1: Eliminar la cabeza (primer elemento)
             if (index == 0) {
-                toDelete = head;
-                head = head->GetNext();
+                toDelete = chain;
+                chain = chain->GetNext();
             }
             // Caso 2: Eliminar cualquier otro elemento (medio o final)
             else {
-                Node<std::string> *prev = head;
+                Node<std::string> *prev = chain;
                 for (int i = 0; i < index - 1; i++) {
                     prev = prev->GetNext();
                 }
@@ -397,28 +447,33 @@ namespace Structure {
             }
 
             delete toDelete;
-            count--;
+            length--;
         }
 
-        // Imprimir la lista iterando una sola vez O(N) usando un ciclo for
         std::string ToString() {
             std::string str = "List [";
-            Node<std::string> *current = head;
 
-            for (int i = 0; i < count; i++) {
-                str.append(current->GetValue());
+            for (int i = 0; i < this->Length(); i++) {
+                std::string tmp = this->Get(i) ;
 
-                // Agrega la coma solo si no estamos en el último elemento
-                if (i < count - 1) {
+                str.append(tmp);
+
+                if (i < this->Length()-1) {
                     str.append(", ");
                 }
-
-                // Avanzamos al siguiente nodo
-                current = current->GetNext();
             }
 
             str.append("];");
             return str;
+        }
+
+        ~ListString() {
+            Node<std::string> *current = chain;
+            while (current != nullptr) {
+                Node<std::string> *next = current->GetNext();
+                delete current;
+                current = next;
+            }
         }
     };
 }

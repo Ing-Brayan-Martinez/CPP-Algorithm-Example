@@ -13,14 +13,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Define executable
 add_executable(AlgorithmExampleTest
+        src/Dinamic-FactorialTest.cpp
+        src/Dinamic-FibonacciTest.cpp
+        src/Dinamic-FizzBuzzTest.cpp
         src/Ordering-BubbleSortTest.cpp
         src/Ordering-QuickSortTest.cpp
         src/Ordering-SelectionSortTest.cpp
-        src/Dinamic-FactorialTest.cpp
-        src/Structure-ArrayListTest.cpp
-        src/Structure-LinkedListTest.cpp
-        src/Dinamic-FibonacciTest.cpp
-        src/Dinamic-FizzBuzzTest.cpp)
+        src/Structure-ListTest.cpp
+)
 
 # Link libraries
 target_link_libraries(AlgorithmExampleTest PRIVATE
